@@ -5,20 +5,15 @@ load exposure_stimulus_experiment.mat
 stimulus_start_times = 0:1/6:(60-1/6); % In seconds
 
 % histogram(spikes_single_unit, stimulus_start_times)
-F = zeros(360, 1000)
-for trialCount = 1:size(stimulus_start_times,2)
+F = cell(10)
+for trialCount = 1:10
     start = stimulus_start_times(trialCount)
     eee = (start + 1/6)
-    filtered = spikes_single_unit((start <= spikes_single_unit) & (eee > spikes_single_unit))
-    mini = start:1/1000:(eee - 1/1000)
-    [N, edges] = histcount(filtered, mini)
-    F(trialCount) = N
-%     for spikeCount = 1:length(spikePos)
-%         plot([spikePos(spikeCount) spikePos(spikeCount)], ...
-%             [trialCount-0.4 trialCount+0.4], 'k');
-%     end
+    filtered = spikes_single_unit((start <= spikes_single_unit) & (eee > spikes_single_unit)) - start
+    F(trailCount) = filtered 
 end
-plot(F)
+plotSpikeRaster)
+% plot(F)
 % ylim([0 size(spikeMat, 1)+1]);
 
 % s = 360
