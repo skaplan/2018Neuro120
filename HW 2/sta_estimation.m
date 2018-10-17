@@ -6,6 +6,9 @@ load dmr_experiment
 % Plot spectrogram of stimulus
 % plot_spectrogram(stim_spectrogram, stim_time, stim_freq)
 
+A = stim_spectrogram * transpose(stim_spectrogram)
+
+imagesc(A);
 %% Generate STA
 t_past = 125; % in ms
 t_future = 125; % in ms
@@ -36,5 +39,7 @@ sta = staprime / nspikes;
 % Plot results
 figure(2)
 plot_spectrogram(sta, sta_time, sta_freq);
+
+
 xlabel('Time relative to spike (ms)')
 colorbar

@@ -4,7 +4,7 @@ load exposure_stimulus_experiment.mat
 
 stimulus_start_times = 0:1/6:(60-1/6); % In seconds
 
-% histogram(spikes_single_unit, stimulus_start_times)
+histogram(spikes_single_unit, stimulus_start_times)
 c = 100
 a = 5
 R = zeros(a,c)
